@@ -29,6 +29,10 @@ export default function App() {
       Alert.alert('Enter data about task')
     }
   }
+  // remove element from array with long press on element
+  const removeTodo = (id) => {
+    setTodos(prev=>prev.filter(todo=>todo.id !== id))
+  }
 
   return (
     <View >
@@ -39,9 +43,12 @@ export default function App() {
           btnPress={btnPress} 
           onChangeInput={onChangeInput}/>
         <FlatList
+          //  like "key"
+          keyExtractor={item=>item.id.toString()}
+          //  all array with data
           data={todos}
           // don't forget to distruct item like argument
-          renderItem={({item})=>(<TodoList todo={item}/>)}/>
+          renderItem={({item})=>(<TodoList onRemove={removeTodo} todo={item}/>)}/>
       </View>
     </View>
   );

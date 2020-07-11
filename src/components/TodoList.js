@@ -1,11 +1,15 @@
 import React from 'react'
-import { View, Text, FlatList, StyleSheet } from 'react-native'
+import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
 
-export const TodoList = ({todo}) => {    
+export const TodoList = ({todo, onRemove}) => {    
      return(
-        <View>
-            <Text style={styles.todo}>{todo.title}</Text> 
-        </View>
+         <TouchableOpacity 
+            onPress={() => console.log('Pressed', todo.id)}
+            onLongPress={() => onRemove(todo.id)}>
+            <View>
+                <Text style={styles.todo}>{todo.title}</Text> 
+            </View>
+        </TouchableOpacity>
     )
 }
 
