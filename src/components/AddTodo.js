@@ -9,7 +9,12 @@ export const AddTodo = ({inpValue,onChangeInput, btnPress}) => {
                 value={inpValue}
                 style={styles.inp}
                 placeholder="Enter data" 
-                onChangeText={text => onChangeInput(text)}/>
+                onChangeText={text => onChangeInput(text)}
+                autoCorrect
+                autoCapitalize="none"
+                // keyboardType='numeric'
+                />
+                
             <Button 
                 title="ADD" 
                 onPress={btnPress}/>

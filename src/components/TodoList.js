@@ -1,12 +1,10 @@
 import React from 'react'
 import { View, Text, FlatList, StyleSheet } from 'react-native'
 
-export const TodoList = ({todos}) => {
-    const list = todos.map((el) => <Text style={styles.todo} key={el.id}>{el.title}</Text>)
-    
-    return(
-        <View >
-           {list} 
+export const TodoList = ({todo}) => {    
+     return(
+        <View>
+            <Text style={styles.todo}>{todo.title}</Text> 
         </View>
     )
 }

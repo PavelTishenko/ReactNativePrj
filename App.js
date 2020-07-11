@@ -5,7 +5,7 @@ import { Navbar } from './src/components/navbar'
 import { AddTodo } from './src/components/AddTodo'
 import { TodoList } from './src/components/TodoList'
 // React Native elements
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { FlatList, ScrollView ,StyleSheet, Text, View, TextInput, Button, Alert } from 'react-native';
 
 export default function App() {
   const [inpValue, setInpValue] = useState('')
@@ -23,9 +23,13 @@ export default function App() {
     if(inpValue.trim()){
       setTodos(prev => [...prev, newTodos])
       setInpValue('')
+    } else {
+      // With Alert.alert() from React Native
+      //  we can throw error
+      Alert.alert('Enter data about task')
     }
-    
   }
+
   return (
     <View >
       <Navbar title="Todo App" />
@@ -34,7 +38,10 @@ export default function App() {
           inpValue={inpValue}
           btnPress={btnPress} 
           onChangeInput={onChangeInput}/>
-          <TodoList todos={todos}/>
+        <FlatList
+          data={todos}
+          // don't forget to distruct item like argument
+          renderItem={({item})=>(<TodoList todo={item}/>)}/>
       </View>
     </View>
   );
