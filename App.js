@@ -19,8 +19,12 @@ export default function App() {
       id: Date.now().toString(),
       title: inpValue
     }
-    setTodos(prev => [...prev, newTodos])
-    setInpValue('')
+    // check if inpValue has some data in it 
+    if(inpValue.trim()){
+      setTodos(prev => [...prev, newTodos])
+      setInpValue('')
+    }
+    
   }
   return (
     <View >
