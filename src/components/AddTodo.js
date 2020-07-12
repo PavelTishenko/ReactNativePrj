@@ -1,5 +1,10 @@
 import React from 'react'
-import { View, Text, TextInput, TouchableOpacity , Button, StyleSheet } from 'react-native'
+import { 
+    View, Text, 
+    TextInput, TouchableOpacity, 
+    StyleSheet} from 'react-native'
+import {ThemeProvider, Button} from 'react-native-elements'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 export const AddTodo = ({inpValue,onChangeInput, btnPress}) => {
     return(
@@ -14,13 +19,28 @@ export const AddTodo = ({inpValue,onChangeInput, btnPress}) => {
                 autoCapitalize="none"
                 // keyboardType='numeric'
                 />
-                <TouchableOpacity 
+                {/* {/* // btn from RN Elements */}
+                <Button 
+                    title='ADD'
+                    type="solid"
+                    onPress={btnPress}
+                    buttonStyle={styles.btn}
+                    icon={
+                        <Icon 
+                            name="plus-square"
+                            size={20}
+                            color="white"/>
+                    }/>      
+                
+                {/* custom button */}
+                {/* <TouchableOpacity 
                     onPress={btnPress}
                     style={styles.btn}>
                     <Text 
                     style={styles.text}>ADD</Text>
-                </TouchableOpacity>
-                
+                </TouchableOpacity> */}
+
+                {/* default button */}
             {/* <Button
                 style={styles.btn} 
                 title="ADD" 
@@ -47,9 +67,10 @@ const styles = StyleSheet.create({
         borderRadius: 5
     },
     btn:{
-        padding: 16,
+        marginLeft: 15,
+        padding: 14,
         backgroundColor: '#3949ab',
-        width: '28%',
+        width: '60%',
         alignItems: 'center',
         borderRadius: 5
     },

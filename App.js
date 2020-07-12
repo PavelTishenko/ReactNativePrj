@@ -5,9 +5,14 @@ import { Navbar } from './src/components/navbar'
 import { AddTodo } from './src/components/AddTodo'
 import { TodoList } from './src/components/TodoList'
 // React Native elements
-import { FlatList, ScrollView ,StyleSheet, Text, View, TextInput, Button, Alert } from 'react-native';
+import { 
+  FlatList, ScrollView,
+  StyleSheet, Text, 
+  View, TextInput, 
+  Button, Alert, 
+  ImageBackground} from 'react-native';
 
-export default function App() {
+  export default function App() {
   const [inpValue, setInpValue] = useState('')
   const [todos, setTodos] = useState([])
   const onChangeInput = (text) => {
@@ -33,10 +38,13 @@ export default function App() {
   const removeTodo = (id) => {
     setTodos(prev=>prev.filter(todo=>todo.id !== id))
   }
-
+  const image = "./assets/bck.jpg"
   return (
     <View >
       <Navbar title="Todo App" />
+      {/* in source u'll need to not forget about 
+          source = {"require(image)" }*/}
+      <ImageBackground style={styles.img} source={require(image)}>
       <View style={styles.container}>
         <AddTodo 
           inpValue={inpValue}
@@ -50,6 +58,7 @@ export default function App() {
           // don't forget to distruct item like argument
           renderItem={({item})=>(<TodoList onRemove={removeTodo} todo={item}/>)}/>
       </View>
+      </ImageBackground>
     </View>
   );
 };
@@ -59,5 +68,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     paddingVertical: 20
   },
-
+  img: { 
+    resizeMode: 'cover',
+  }
 });
