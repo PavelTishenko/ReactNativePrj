@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity , Button, StyleSheet } from 'react-native'
 
 export const AddTodo = ({inpValue,onChangeInput, btnPress}) => {
     return(
@@ -14,10 +14,17 @@ export const AddTodo = ({inpValue,onChangeInput, btnPress}) => {
                 autoCapitalize="none"
                 // keyboardType='numeric'
                 />
+                <TouchableOpacity 
+                    onPress={btnPress}
+                    style={styles.btn}>
+                    <Text 
+                    style={styles.text}>ADD</Text>
+                </TouchableOpacity>
                 
-            <Button 
+            {/* <Button
+                style={styles.btn} 
                 title="ADD" 
-                onPress={btnPress}/>
+                onPress={btnPress}/> */}
         </View>
     )
 };
@@ -36,6 +43,17 @@ const styles = StyleSheet.create({
         padding: 10,
         borderStyle: 'solid',
         borderWidth: 2,
-        borderColor:'#3949ab'
+        borderColor:'#3949ab',
+        borderRadius: 5
+    },
+    btn:{
+        padding: 16,
+        backgroundColor: '#3949ab',
+        width: '28%',
+        alignItems: 'center',
+        borderRadius: 5
+    },
+    text: {
+        color: 'white'
     }
 });
